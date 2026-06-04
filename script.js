@@ -158,3 +158,25 @@ const observer = new IntersectionObserver((entries) => {
 });
 
 observer.observe(statsBar);
+
+const menuBtn = document.querySelector('.menu-toggle');
+const sidebar = document.querySelector('.mobile-sidebar');
+const overlay = document.querySelector('.mobile-menu-overlay');
+const closeBtn = document.querySelector('.close-menu');
+
+function closeMenu(){
+    sidebar.classList.remove('active');
+    overlay.classList.remove('active');
+}
+
+menuBtn.addEventListener('click', () => {
+    sidebar.classList.add('active');
+    overlay.classList.add('active');
+});
+
+closeBtn.addEventListener('click', closeMenu);
+overlay.addEventListener('click', closeMenu);
+
+document.querySelectorAll('.mobile-sidebar a').forEach(link => {
+    link.addEventListener('click', closeMenu);
+});
